@@ -1,18 +1,1 @@
-// The real coords live here, in plain text
-const coords = ['N 40° 44.739', 'W 73° 59.841'];
-
-document.addEventListener('DOMContentLoaded', () => {
-  const coordsElement = document.getElementById('coords');
-  
-  // Typewriter effect for coordinates
-  let i = 0;
-  const fullText = coords.join(' ');
-  const typing = setInterval(() => {
-    if (i < fullText.length) {
-      coordsElement.textContent += fullText.charAt(i);
-      i++;
-    } else {
-      clearInterval(typing);
-    }
-  }, 100);
-});
+const _0x3f75f7=_0x12dc;(function(_0x181719,_0x2ed702){const _0x38795f=_0x12dc,_0x47f96a=_0x181719();while(!![]){try{const _0x262aec=parseInt(_0x38795f(0x1b0))/0x1+-parseInt(_0x38795f(0x1b1))/0x2*(-parseInt(_0x38795f(0x1a7))/0x3)+parseInt(_0x38795f(0x1a6))/0x4+parseInt(_0x38795f(0x1aa))/0x5+-parseInt(_0x38795f(0x1b3))/0x6*(-parseInt(_0x38795f(0x1ab))/0x7)+parseInt(_0x38795f(0x1a4))/0x8*(parseInt(_0x38795f(0x1ac))/0x9)+parseInt(_0x38795f(0x1a9))/0xa*(-parseInt(_0x38795f(0x1ae))/0xb);if(_0x262aec===_0x2ed702)break;else _0x47f96a['push'](_0x47f96a['shift']());}catch(_0x487b29){_0x47f96a['push'](_0x47f96a['shift']());}}}(_0x13b5,0x727f9));function _0x12dc(_0x3184ae,_0x338e5d){const _0x13b555=_0x13b5();return _0x12dc=function(_0x12dc2a,_0x9a6529){_0x12dc2a=_0x12dc2a-0x1a4;let _0x1ee684=_0x13b555[_0x12dc2a];return _0x1ee684;},_0x12dc(_0x3184ae,_0x338e5d);}function _0x13b5(){const _0x2f2d11=['502510vaCCVH','1101170pQpcPP','21UFxMps','3789FLSVmj','length','143OQajpj','addEventListener','240570sRJMQF','726158SQCqyF','charAt','17964akDAmk','textContent','3736jyZgzM','DOMContentLoaded','371104uOEjjh','3ksynqu','W\x2073°\x2059.841'];_0x13b5=function(){return _0x2f2d11;};return _0x13b5();}const coords=['N\x2040°\x2044.739',_0x3f75f7(0x1a8)];document[_0x3f75f7(0x1af)](_0x3f75f7(0x1a5),()=>{const _0x458554=document['getElementById']('coords');let _0x5a0eb0=0x0;const _0x5d8dd4=coords['join']('\x20'),_0x5afc81=setInterval(()=>{const _0x1c508f=_0x12dc;_0x5a0eb0<_0x5d8dd4[_0x1c508f(0x1ad)]?(_0x458554[_0x1c508f(0x1b4)]+=_0x5d8dd4[_0x1c508f(0x1b2)](_0x5a0eb0),_0x5a0eb0++):clearInterval(_0x5afc81);},0x64);});
