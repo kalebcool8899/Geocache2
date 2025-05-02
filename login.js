@@ -1,3 +1,4 @@
+// login.js
 const fakeDB = [
     { username: 'admin', password: 'secret123' }
   ];
@@ -7,11 +8,11 @@ const fakeDB = [
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
   
-    // Build the “vulnerable” SQL query
+    // Simulate a vulnerable SQL query being built client-side
     const query = `SELECT * FROM users WHERE username = '${user}' AND password = '${pass}';`;
     console.log('Generated SQL:', query);
   
-    // Naïve check: does the query string literally contain our true credentials?
+    // Naïve “auth”: just check that both real credentials appear somewhere in the string
     let authenticated = false;
     for (const row of fakeDB) {
       if (
