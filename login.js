@@ -27,5 +27,5 @@ document.getElementById('loginForm').addEventListener('submit', e => {
         return window.location.href = 'success.html';
     }
     
-    document.getElementById('message').textContent = 'Access denied. Try a SQL injection!';
+    
 });
