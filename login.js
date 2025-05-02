@@ -1,21 +1,31 @@
-// login.js (updated)
 document.getElementById('loginForm').addEventListener('submit', e => {
     e.preventDefault();
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
-  
-    // If either input contains ANY non-alphanumeric char (', =, space, --, etc.), allow it
-    const injTest = /[^a-zA-Z0-9]/;
-    if (injTest.test(user) || injTest.test(pass)) {
-      return window.location.href = 'success.html';
+    
+    // Simulate vulnerable SQL query (for educational purposes only)
+    const fakeQuery = `SELECT * FROM users WHERE username='${user}' AND password='${pass}'`;
+    console.log("Simulated vulnerable query:", fakeQuery);
+    
+    // Classic SQL injection patterns that will grant access
+    const injectionPatterns = [
+        /'.*--/,       // Comment bypass
+        /'.*OR.*1=1/,  // Always true condition
+        /'.*;.*/,      // Query stacking
+        /'.*=\s*'/,    // Empty comparison
+        /'.*UNION.*/   // UNION-based injection
+    ];
+    
+    // Check for injection patterns or correct credentials
+    const isInjected = injectionPatterns.some(pattern => 
+        pattern.test(user) || pattern.test(pass)
+    );
+    
+    if (isInjected || (user === 'admin' && pass === 'secret123')) {
+        // Log the "attack" for educational purposes
+        console.log(`Successful ${isInjected ? "SQL injection" : "legitimate"} login`);
+        return window.location.href = 'success.html';
     }
-  
-    // Otherwise, require the real creds
-    if (user === 'admin' && pass === 'secret123') {
-      return window.location.href = 'success.html';
-    }
-  
-    // Fallback: reject everything else
-    document.getElementById('message').textContent = 'Invalid credentials.';
-  });
-  
+    
+    document.getElementById('message').textContent = 'Access denied. Try a SQL injection!';
+});
