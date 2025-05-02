@@ -1,140 +1,96 @@
-/* Global Styles */
+/* style.css */
+
+/* 1) Import a nice sans-serif font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
-  
-  @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  .container {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  h1 {
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    font-size: 2rem;
-  }
-  
-  /* Form Styles */
-  #loginForm {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  input {
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s;
-  }
-  
-  input:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  }
-  
-  button {
-    background-color: #2ecc71;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-top: 1rem;
-  }
-  
-  button:hover {
-    background-color: #27ae60;
-    transform: translateY(-2px);
-  }
-  
-  button:active {
-    transform: translateY(0);
-  }
-  
-  /* Message Styles */
-  #message {
-    height: 1.5rem;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .error {
-    color: #e74c3c;
-    font-weight: 500;
-  }
-  
-  /* Success Page Specific */
-  #coords {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-  }
-  
-  .educational-note {
-    margin-top: 2rem;
-    padding: 1.2rem;
-    background-color: #f8f9fa;
-    border-left: 5px solid #e74c3c;
-    border-radius: 0 8px 8px 0;
-    text-align: left;
-  }
-  
-  .educational-note h3 {
-    color: #2c3e50;
-    margin-top: 0;
-  }
-  
-  .educational-note ul {
-    padding-left: 1.2rem;
-  }
-  
-  .educational-note li {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 500px) {
-    .container {
-      padding: 1.5rem;
-      width: 85%;
-    }
-    
-    h1 {
-      font-size: 1.7rem;
-    }
-  }
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  width: 360px;
+  max-width: 90%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6B73FF;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #6B73FF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #5a62e0;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.error {
+  color: #E74C3C;
+  margin-top: 0.5rem;
+  min-height: 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* Success page coords styling */
+#coords {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Utility for paragraphs */
+p {
+  line-height: 1.5;
+}
