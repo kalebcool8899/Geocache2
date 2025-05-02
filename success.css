@@ -1,0 +1,39 @@
+/* Success page specific styles */
+.container h1 {
+    color: #6B73FF;
+    margin-bottom: 1rem;
+  }
+  
+  .coordinates-box {
+    background: rgba(107, 115, 255, 0.1);
+    border: 2px dashed #6B73FF;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .coords-display {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #6B73FF;
+    margin: 0.5rem 0;
+    letter-spacing: 1px;
+  }
+  
+  .hint {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  
+  /* Animation for the coordinates */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .coords-display {
+    animation: pulse 2s infinite;
+  }
