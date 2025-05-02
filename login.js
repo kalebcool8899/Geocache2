@@ -1,37 +1,21 @@
 // login.js (updated)
-const fakeDB = [
-    { username: 'admin', password: 'secret123' }
-  ];
-  
-  document.getElementById('loginForm').addEventListener('submit', e => {
+document.getElementById('loginForm').addEventListener('submit', e => {
     e.preventDefault();
-    const user = document.getElementById('username').value.trim();
-    const pass = document.getElementById('password').value.trim();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
   
-    // Simulate building a vulnerable SQL query
-    const query = `SELECT * FROM users WHERE username = '${user}' AND password = '${pass}';`;
-    console.log('Generated SQL:', query);
-  
-    let authenticated = false;
-  
-    // 1) Legit check
-    for (const row of fakeDB) {
-      if (user === row.username && pass === row.password) {
-        authenticated = true;
-        break;
-      }
+    // If either input contains ANY non-alphanumeric char (', =, space, --, etc.), allow it
+    const injTest = /[^a-zA-Z0-9]/;
+    if (injTest.test(user) || injTest.test(pass)) {
+      return window.location.href = 'success.html';
     }
   
-    // 2) Injection bypass: if input contains any SQL meta-chars or boolean keywords
-    const injPattern = /['";=]|--|\bOR\b|\bAND\b/i;
-    if (injPattern.test(user) || injPattern.test(pass)) {
-      authenticated = true;
+    // Otherwise, require the real creds
+    if (user === 'admin' && pass === 'secret123') {
+      return window.location.href = 'success.html';
     }
   
-    if (authenticated) {
-      window.location.href = 'success.html';
-    } else {
-      document.getElementById('message').textContent = 'Invalid credentials.';
-    }
+    // Fallback: reject everything else
+    document.getElementById('message').textContent = 'Invalid credentials.';
   });
   
