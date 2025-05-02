@@ -9,20 +9,22 @@ document.getElementById('loginForm').addEventListener('submit', e => {
     const fakeQuery = `SELECT * FROM users WHERE username='${user}' AND password='${pass}'`;
     console.log('Simulated vulnerable query:', fakeQuery);
     
-    // Check for specific SQL injection patterns
-    const injectionPatterns = [
-        /' OR '1'='1/, 
-        /' OR 1=1--/, 
-        /' OR ''='/, 
-        /' OR 'a'='a/,
-        /'--/,
-        /' OR '1'='1'--/,
-        /admin'--/
-    ];
-    
-    const isInjection = injectionPatterns.some(pattern => 
-        pattern.test(user) || pattern.test(pass)
-    );
+    // Check for SQL injection patterns
+    const isInjection = 
+        // Common SQL injection patterns
+        user.includes("'") || pass.includes("'") ||  // Any quote
+        user.includes("--") || pass.includes("--") || // SQL comments
+        user.includes("/*") || pass.includes("/*") || // Block comments
+        user.includes("OR") || pass.includes("OR") || // OR clauses
+        user.includes("AND") || pass.includes("AND") || // AND clauses
+        user.includes("=") || pass.includes("=") ||   // Equality
+        user.includes(";") || pass.includes(";") ||   // Query termination
+        user.includes("1=1") || pass.includes("1=1") || // Always true
+        // More advanced patterns
+        user.includes("UNION") || pass.includes("UNION") || // UNION attacks
+        user.includes("SELECT") || pass.includes("SELECT") || // Sub-queries
+        user.includes("SLEEP") || pass.includes("SLEEP") || // Time-based
+        user.includes("BENCHMARK") || pass.includes("BENCHMARK"); // Time-based
     
     if (isInjection) {
         console.log('Successful SQL injection detected!');
