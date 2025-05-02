@@ -4,14 +4,23 @@ document.getElementById('loginForm').addEventListener('submit', e => {
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
     
-    // Check for any SQL injection indicators
-    const isInjection = /['"=;]|--|\/\*|OR|AND|UNION|SELECT|SLEEP|BENCHMARK|1=1/i.test(user + pass);
+    // Hardcoded valid credentials (insecure implementation)
+    const validUsers = {
+        "admin": "password123",
+        "user1": "geocache1",
+        "geocacher": "treasure42"
+    };
     
-    if (isInjection) {
-        // Successful injection - redirect silently
+    // Simulate vulnerable SQL query
+    const fakeQuery = `SELECT * FROM users WHERE username='${user}' AND password='${pass}'`;
+    console.log("Vulnerable query:", fakeQuery);
+    
+    // Check for either:
+    // 1. Valid credentials OR
+    // 2. SQL injection pattern
+    if (validUsers[user] === pass || /['"=;]|--|\/\*|OR|AND|1=1/i.test(user + pass)) {
         window.location.href = 'success.html';
     } else {
-        // Failed attempt - just reset the form with no feedback
-        document.getElementById('loginForm').reset();
+        document.getElementById('message').textContent = "Access denied";
     }
 });
