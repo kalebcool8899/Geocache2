@@ -30,7 +30,7 @@ document.getElementById('loginForm').addEventListener('submit', e => {
         console.log('Successful SQL injection detected!');
         window.location.href = 'success.html';
     } else {
-        message.textContent = 'Invalid credentials - try SQL injection!';
+        
         console.log('Regular login attempt failed');
     }
 });
