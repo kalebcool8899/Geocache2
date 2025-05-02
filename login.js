@@ -1,1 +1,23 @@
-const _0x4e4203=_0x31bd;function _0x31bd(_0x327b13,_0x5a8a8e){const _0x2c786a=_0x2c78();return _0x31bd=function(_0x31bda4,_0x220ec0){_0x31bda4=_0x31bda4-0xf3;let _0x3d70b3=_0x2c786a[_0x31bda4];return _0x3d70b3;},_0x31bd(_0x327b13,_0x5a8a8e);}function _0x2c78(){const _0x2fc0c3=['username','10109ZLLtEh','1648rafygc','loginForm','textContent','1781694DVAVae','getElementById','log','addEventListener','password123','message','5750glHQaV','Vulnerable\x20query:','value','8091jigyXZ','\x27\x20AND\x20password=\x27','SELECT\x20*\x20FROM\x20users\x20WHERE\x20username=\x27','509275sukiqW','preventDefault','submit','4TOGqPp','7500fNwXPS','299589Gtecgp','616189gBLKwQ','treasure42','location','geocache1','password','39sDLwjU'];_0x2c78=function(){return _0x2fc0c3;};return _0x2c78();}(function(_0x5495bf,_0x24f6b3){const _0x32bf0d=_0x31bd,_0x20447d=_0x5495bf();while(!![]){try{const _0xcf3201=-parseInt(_0x32bf0d(0xf5))/0x1+-parseInt(_0x32bf0d(0x107))/0x2*(parseInt(_0x32bf0d(0xfb))/0x3)+parseInt(_0x32bf0d(0xf3))/0x4*(parseInt(_0x32bf0d(0x10d))/0x5)+-parseInt(_0x32bf0d(0x101))/0x6+-parseInt(_0x32bf0d(0xf6))/0x7+-parseInt(_0x32bf0d(0xfe))/0x8*(-parseInt(_0x32bf0d(0x10a))/0x9)+-parseInt(_0x32bf0d(0xf4))/0xa*(-parseInt(_0x32bf0d(0xfd))/0xb);if(_0xcf3201===_0x24f6b3)break;else _0x20447d['push'](_0x20447d['shift']());}catch(_0x20839d){_0x20447d['push'](_0x20447d['shift']());}}}(_0x2c78,0x3e197),document[_0x4e4203(0x102)](_0x4e4203(0xff))[_0x4e4203(0x104)](_0x4e4203(0x10f),_0x4e1c58=>{const _0x177480=_0x4e4203;_0x4e1c58[_0x177480(0x10e)]();const _0x1de0a6=document[_0x177480(0x102)](_0x177480(0xfc))[_0x177480(0x109)],_0x21f294=document[_0x177480(0x102)](_0x177480(0xfa))[_0x177480(0x109)],_0x5a93f3={'admin':_0x177480(0x105),'user1':_0x177480(0xf9),'geocacher':_0x177480(0xf7)},_0x239237=_0x177480(0x10c)+_0x1de0a6+_0x177480(0x10b)+_0x21f294+'\x27';console[_0x177480(0x103)](_0x177480(0x108),_0x239237),_0x5a93f3[_0x1de0a6]===_0x21f294||/['"=;]|--|\/\*|OR|AND|1=1/i['test'](_0x1de0a6+_0x21f294)?window[_0x177480(0xf8)]['href']='success.html':document['getElementById'](_0x177480(0x106))[_0x177480(0x100)]='Access\x20denied';}));
+document.getElementById('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    
+    // EXTREMELY strict SQL injection detection
+    const isInjection = /('.+('|\)|--|\/\*))|(OR|AND|UNION|SELECT|INSERT|UPDATE|DELETE|EXEC|ALTER|CREATE|DROP|SLEEP|BENCHMARK|WAITFOR|1=1|0=0)/i.test(user + pass);
+    
+    // Simulate vulnerable SQL query
+    const fakeQuery = `SELECT * FROM users WHERE username='${user}' AND password='${pass}'`;
+    console.log("Vulnerable query:", fakeQuery);
+    
+    if (isInjection) {
+        window.location.href = 'success.html';
+    } else {
+        // Clear form and show generic error
+        document.getElementById('loginForm').reset();
+        document.getElementById('message').textContent = "Invalid credentials";
+        // Log failed attempts
+        console.log(`Blocked login attempt: ${user} / ${pass}`);
+    }
+});
